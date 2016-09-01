@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/avjpl/.ssh'
+let g:netrw_dirhist_2='/Users/avjpl/tutorials/pm2/app2'
+let g:netrw_dirhist_3='/Users/avjpl/gitRepos/react-universal-web-apps-original/app'
+let g:netrw_dirhist_4='/Users/avjpl/gitRepos/react-universal-web-apps-original/app/infra'
+let g:netrw_dirhist_5='/Users/avjpl/gitRepos/react-universal-web-apps-original/app'
+let g:netrw_dirhist_6='/Users/avjpl/gitRepos/react-universal-web-apps-original/app/components'
+let g:netrw_dirhist_7='/Users/avjpl/gitRepos/react-universal-web-apps-original/app/components/bill'
