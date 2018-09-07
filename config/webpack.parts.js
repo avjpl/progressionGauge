@@ -99,3 +99,9 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
 exports.generateSourceMaps = ({ type }) => ({
   devtool: type,
 });
+
+exports.logger = (a, b) => {
+  console.log(`Logger: ${a} -> ${b}`)
+
+  return {};
+}

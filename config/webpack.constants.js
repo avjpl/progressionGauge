@@ -1,6 +1,6 @@
 const path = require('path');
 
-exports.PORT = 8080;
+exports.PORT = 3300;
 exports.PATHS = {
   root: path.resolve(__dirname, '..'),
   src: path.resolve(__dirname, '..', 'src'),
