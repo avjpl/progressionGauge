@@ -15,6 +15,8 @@ module.exports = merge([
   {
     output: {
       filename: 'react-gauge.js',
+      library: 'reactGauge',
+      libraryTarget: 'umd',
     },
   },
 ]);
