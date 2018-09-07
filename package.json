@@ -1,5 +1,5 @@
 {
-  "name": "RadialGauge",
+  "name": "react-radial-gauge",
   "version": "1.0.0",
   "main": "dist/react-gauge.js",
   "scripts": {
@@ -8,7 +8,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "RadialGauge": "https://github.com/avjpl/progressionGauge.git",
     "axios": "^0.18.0",
     "cors": "^2.8.4",
     "num": "^0.3.0",
