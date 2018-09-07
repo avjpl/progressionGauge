@@ -1,5 +1,5 @@
 {
-  "name": "webpack_4_demo",
+  "name": "RadialGauge",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,8 @@
     "react-router-dom": "^4.3.1",
     "react-transition-group": "^2.4.0",
     "webpack": "^4.17.1",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.1.0",
+    "webpack_4_demo": "https://github.com/avjpl/progressionGauge.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
