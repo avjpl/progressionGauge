@@ -14,7 +14,7 @@ module.exports = merge([
   },
   {
     output: {
-      filename: 'react-svg-gauge.js',
+      filename: 'react-gauge.js',
     },
   },
 ]);
