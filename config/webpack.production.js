@@ -9,7 +9,7 @@ const {
 
 module.exports = merge([
   {
-    entry: './index.js',
+    entry: './src/components/RadialGauge.js',
   },
   {
     output: {

@@ -5,5 +5,7 @@ const {
 } = require('./webpack.parts')
 
 module.exports = mode => merge([
-  loadJavaScript(),
+  loadJavaScript({
+    ...( mode === 'production' ? { exclude: /node_modules/ } : {} )
+  }),
 ]);
