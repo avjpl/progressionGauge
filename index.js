@@ -1,1 +1,1 @@
-module.exports = require('./src/components/RadialGauge');
+export RadialGauge from './src/components/RadialGauge';

@@ -1,6 +1,5 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 const merge = require('webpack-merge');
-const WebpackMd5Hash = require('webpack-md5-hash');
 
 const {
   extractCSS,
@@ -14,9 +13,15 @@ module.exports = merge([
   },
   {
     output: {
+      path: path.resolve(__dirname, '..', 'dist'),
       filename: 'react-gauge.js',
       library: 'reactGauge',
       libraryTarget: 'umd',
     },
   },
+  {
+    externals: {
+      react: 'react',
+    }
+  }
 ]);
