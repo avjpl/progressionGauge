@@ -1,1 +1,1 @@
-export RadialGauge from './src/components/RadialGauge';
+module.exports = require('./dist/react-gauge.js');
