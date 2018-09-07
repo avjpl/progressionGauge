@@ -1,7 +1,7 @@
 {
   "name": "react-radial-gauge",
   "version": "1.0.0",
-  "module": "index.js",
+  "main": "dist/react-gauge.js",
   "scripts": {
     "start": "webpack-dev-server --env development",
     "build": "webpack --env production"
@@ -13,7 +13,6 @@
     "num": "^0.3.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-radial-gauge": "https://github.com/avjpl/progressionGauge.git",
     "react-router-dom": "^4.3.1",
     "react-transition-group": "^2.4.0",
     "webpack": "^4.17.1",
