@@ -5,41 +5,56 @@ import { arc } from '../helpers'
 class ProgressionGauge extends Component {
 
   renderDial = opts => {
-    const segmentSize = Math.round(360 / opts.colors?.length);
+    const segmentSize = Math.round(360 / opts.colors ?.length);
 
     let start = 0;
     let end = 0;
 
     if (segmentSize) {
       return (
-        <g transform={ `rotate(90 ${ opts.cX } ${ opts.cY })` }>
+        <g transform={`rotate(90 ${opts.cX} ${opts.cY})`}>
           {
             opts.colors.map(hex => {
-              const color = `#${ hex }`;
-          
+              const color = `#${hex}`;
+
               start = end;
               end = (start + segmentSize);
-          
+
               return <path
-                key={ hex }
+                key={hex}
                 fill='none'
-                stroke={ color }
-                strokeWidth={ opts.strokeWidth }
-                d={ arc(opts.cX, opts.cY, opts.radius, start, end) }
+                stroke={color}
+                strokeWidth={opts.strokeWidth}
+                d={arc(opts.cX, opts.cY, opts.radius, start, end)}
               />
             })
           }
+
+          <g transform={`rotate(-90 ${opts.cX} ${opts.cY})`}>
+            <circle
+              cx={opts.cX}
+              cy={opts.cY}
+              r={opts.radius}
+              fill='none'
+              stroke={opts.strokeColor}
+              strokeWidth={opts.strokeWidth}
+              strokeDasharray={opts.circumference}
+              strokeDashoffset={opts.offset - opts.circumference}
+            >
+            </circle>
+          </g>
         </g>
       )
     } else {
       return (
         <circle
-          cx={ opts.cX }
-          cy={ opts.cY }
-          r={ opts.radius }
+          cx={opts.cX}
+          cy={opts.cY}
+          r={opts.radius}
           fill='none'
-          stroke={ opts.strokeColor }
-          strokeWidth={ opts.strokeWidth }
+          stroke={opts.strokeColor}
+          strokeWidth={opts.strokeWidth}
+          strokeDashoffset={offset}
         >
         </circle>
       )
@@ -47,19 +62,17 @@ class ProgressionGauge extends Component {
   };
 
   renderProgress = opts => {
-    let offset = (opts.circumference * (1 - (opts.currentValue / 100)));
-
     return (
       <circle
-        cx={ opts.cX }
-        cy={ opts.cY }
-        r={ opts.radius }
+        cx={opts.cX}
+        cy={opts.cY}
+        r={opts.radius}
         fill='none'
-        stroke={ opts.progressColor }
-        strokeWidth={ opts.strokeWidth }
-        strokeDasharray={ opts.circumference }
-        strokeDashoffset={ offset }
-        strokeLinecap={ opts.progressRoundedEdge ? 'round' : 'butt' }
+        stroke={opts.progressColor}
+        strokeWidth={opts.strokeWidth}
+        strokeDasharray={opts.circumference}
+        strokeDashoffset={opts.offset}
+        strokeLinecap={opts.progressRoundedEdge ? 'round' : 'butt'}
       />
     )
   };
@@ -76,23 +89,23 @@ class ProgressionGauge extends Component {
     return (
       <g>
         <polygon
-          points={ `${ x1 },${ y1 } ${ x2 },${ y2 } ${ x3 },${ y3 }` }
-          fill={ opts.needleColor }
-          transform={ `rotate(${ opts.needleAngle } ${ opts.cX } ${ opts.cY })` }
+          points={`${x1},${y1} ${x2},${y2} ${x3},${y3}`}
+          fill={opts.needleColor}
+          transform={`rotate(${opts.needleAngle} ${opts.cX} ${opts.cY})`}
         >
           <animateTransform
             attributeName='transform'
             type='rotate'
-            from={ `0 ${ opts.cX } ${ opts.cY }`}
-            to={ `${ opts.needleAngle } ${ opts.cX } ${ opts.cY }` }
+            from={`0 ${opts.cX} ${opts.cY}`}
+            to={`${opts.needleAngle} ${opts.cX} ${opts.cY}`}
             dur='.5s'
             fill='freeze'></animateTransform>
         </polygon>
         <circle
-          cx={ opts.cX }
-          cy={ opts.cY }
-          r={ opts.needleWidth  / 2}
-          fill={ opts.needleBaseColor }>
+          cx={opts.cX}
+          cy={opts.cY}
+          r={opts.needleWidth / 2}
+          fill={opts.needleBaseColor}>
         </circle>
       </g>
     )
@@ -100,38 +113,49 @@ class ProgressionGauge extends Component {
 
   render() {
     let opts = { ...this.props };
-    let { size, strokeWidth } = opts;
+    const {
+      size,
+      strokeWidth,
+      currentValue,
+      colors,
+      className,
+      displayPercentage
+    } = opts;
 
-    let cX = size / 2;
-    let cY = size / 2;
-    let radius = (size - (2 * strokeWidth)) / 2;
-    let diameter = 2 * radius;
-    let circumference = 2 * Math.PI * radius;
-    let needleAngle = (360 * opts.currentValue) / 100;
+    const cX = size / 2;
+    const cY = size / 2;
+    const radius = (size - (2 * strokeWidth)) / 2;
+    const diameter = 2 * radius;
+    const circumference = 2 * Math.PI * radius;
+    const needleAngle = (360 * currentValue) / 100;
+    const offset = (circumference * (1 - (currentValue / 100)));
 
-    opts = { ...opts, ...{
-      cX,
-      cY,
-      radius,
-      diameter,
-      circumference,
-      needleAngle,
-    }};
+    opts = {
+      ...opts, ...{
+        cX,
+        cY,
+        radius,
+        diameter,
+        circumference,
+        needleAngle,
+        offset,
+      }
+    };
 
     return (
       <Fragment>
-        { opts.displayPercentage && <span>{opts.currentValue}%</span> }
+        {displayPercentage && <span>{currentValue}%</span>}
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          className={ opts.className }
-          height={ size }
-          width={ size }
-          viewBox={ `0 0 ${size} ${size}` }
+          className={className}
+          height={size}
+          width={size}
+          viewBox={`0 0 ${size} ${size}`}
         >
-          <g transform={ `rotate(-90 ${cX} ${cY})` }>
-            { this.renderDial(opts) }
-            { !opts.colors && this.renderProgress(opts) }
-            { this.renderNeedle(opts) }
+          <g transform={`rotate(-90 ${cX} ${cY})`}>
+            {this.renderDial(opts)}
+            {!colors && this.renderProgress(opts)}
+            {this.renderNeedle(opts)}
           </g>
         </svg>
       </Fragment>
