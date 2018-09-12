@@ -1,6 +1,6 @@
 {
   "name": "react-radial-gauge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/react-gauge.js",
   "scripts": {
     "start": "webpack-dev-server --env development",
