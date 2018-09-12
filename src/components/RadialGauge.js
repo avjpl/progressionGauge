@@ -98,7 +98,7 @@ class ProgressionGauge extends Component {
             type='rotate'
             from={`0 ${opts.cX} ${opts.cY}`}
             to={`${opts.needleAngle} ${opts.cX} ${opts.cY}`}
-            dur='.5s'
+            dur='0.5s'
             fill='freeze'></animateTransform>
         </polygon>
         <circle
