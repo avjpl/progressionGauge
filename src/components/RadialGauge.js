@@ -30,19 +30,18 @@ class ProgressionGauge extends Component {
             })
           }
 
-          <g transform={`rotate(-90 ${opts.cX} ${opts.cY})`}>
-            <circle
-              cx={opts.cX}
-              cy={opts.cY}
-              r={opts.radius}
-              fill='none'
-              stroke={opts.strokeColor}
-              strokeWidth={opts.strokeWidth}
-              strokeDasharray={opts.circumference}
-              strokeDashoffset={opts.offset - opts.circumference}
-            >
-            </circle>
-          </g>
+          <circle
+            cx={opts.cX}
+            cy={opts.cY}
+            r={opts.radius}
+            fill='none'
+            stroke={opts.strokeColor}
+            strokeWidth={opts.strokeWidth}
+            strokeDasharray={opts.circumference}
+            strokeDashoffset={opts.offset - opts.circumference}
+            transform={`rotate(-90 ${opts.cX} ${opts.cY})`}
+          >
+          </circle>
         </g>
       )
     } else {
