@@ -53,7 +53,7 @@ class ProgressionGauge extends Component {
           fill='none'
           stroke={opts.strokeColor}
           strokeWidth={opts.strokeWidth}
-          strokeDashoffset={offset}
+          strokeDashoffset={opts.offset}
         >
         </circle>
       )
