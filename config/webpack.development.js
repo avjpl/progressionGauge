@@ -16,7 +16,7 @@ module.exports = merge([
   {
     plugins: [
       new Jarvis({
-        port: 1337 // optional: set a port
+        port: 1340
       }),
       new HtmlWebpackPlugin({
         title: 'Webpack demo',

@@ -173,9 +173,9 @@ ProgressionGauge.defaultProps = {
   progressRoundedEdge: true,
 
   needle: true,
-  needleBaseColor: '#9d9d9d',
+  needleColor: '#000',
+  needleBaseColor: '#000',
   needleWidth: 8,
-  needleColor: '#8a8a8a'
 };
 
 export default ProgressionGauge;
