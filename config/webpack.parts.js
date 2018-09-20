@@ -26,7 +26,7 @@ exports.loadCSS = ({ include, exclude, use } = {}) => ({
 
 exports.extractCSS = ({ include, exclude, use } = {}) => {
   const plugin = new MiniCssExtractPlugin({
-    filename: '[name].css',
+    filename: 'react-gauge.css',
     chunkFilename: '[id].css'
   });
   return {

@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
-import { arc } from '../helpers'
+import { arc } from '../helpers';
+
+import styles from './react-gauge.css';
 
 class ProgressionGauge extends Component {
 
@@ -111,12 +113,10 @@ class ProgressionGauge extends Component {
   };
 
   renderText = opts => {
-    const pos = this.getTextPos(opts);
-
     return (
       <text
-        x={pos.cX}
-        y={pos.cY}
+        x={opts.cX - 15}
+        y={opts.cY - 180}
         fontFamily={opts.progressFont}
         fontSize={opts.progressFontSize}
         transform={`rotate(90 ${opts.cX} ${opts.cY})`}
@@ -128,19 +128,6 @@ class ProgressionGauge extends Component {
     )
   };
 
-  getTextPos = (opts) => {
-    return {
-      topRight: {
-        cX: opts.size - 15,
-        cY: opts.size - 180,
-      },
-      centerMiddleBottom: {
-        cX: opts.cX + 4,
-        cY: opts.cY + 55,
-      }
-    }[opts.textPosition];
-  }
-
   render() {
     let opts = { ...this.props };
     const {
@@ -149,7 +136,8 @@ class ProgressionGauge extends Component {
       currentValue,
       colors,
       className,
-      displayPercentage,
+      textPosition,
+      showPrecentage,
     } = opts;
 
     const cX = size / 2;
@@ -172,10 +160,9 @@ class ProgressionGauge extends Component {
       }
     };
 
-    console.log(opts)
-
     return (
-      <Fragment>
+      <div className={styles.gauage}>
+        { showPrecentage && <span className={`${styles.alignRight} ${styles[textPosition]}`}>{currentValue}</span> }
         <svg
           xmlns='http://www.w3.org/2000/svg'
           className={className}
@@ -190,7 +177,7 @@ class ProgressionGauge extends Component {
             {this.renderNeedle(opts)}
           </g>
         </svg>
-      </Fragment>
+      </div>
     )
   }
 }

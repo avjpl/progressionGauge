@@ -1,0 +1,15 @@
+.gauage {
+  display: flex;
+}
+
+.alignRight {
+  order: 1;
+}
+
+.topRight {
+  align-items: flex-start
+}
+
+.rightMiddle {
+  align-items: center;
+}
