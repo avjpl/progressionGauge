@@ -9,6 +9,8 @@ class App extends Component {
       progressColor: '#EEAD23',
       currentValue: 30,
       colors: [ 'e00030', 'f7a424', 'f8e71b', '7cd523', '417700' ],
+      showPrecentage: true,
+      textPosition: 'centerMiddleBottom',
     };
 
     return (

@@ -110,6 +110,37 @@ class ProgressionGauge extends Component {
     )
   };
 
+  renderText = opts => {
+    const pos = this.getTextPos(opts);
+
+    return (
+      <text
+        x={pos.cX}
+        y={pos.cY}
+        fontFamily={opts.progressFont}
+        fontSize={opts.progressFontSize}
+        transform={`rotate(90 ${opts.cX} ${opts.cY})`}
+        textAnchor="middle"
+        fill={opts.textColor}
+      >
+        {opts.currentValue}
+      </text>
+    )
+  };
+
+  getTextPos = (opts) => {
+    return {
+      topRight: {
+        cX: opts.size - 10,
+        cy: opts.size - 180,
+      },
+      centerMiddleBottom: {
+        cX: opts.cX,
+        cY: opts.cY + 55,
+      }
+    }[opts.textPosition];
+  }
+
   render() {
     let opts = { ...this.props };
     const {
@@ -153,6 +184,7 @@ class ProgressionGauge extends Component {
         >
           <g transform={`rotate(-90 ${cX} ${cY})`}>
             {this.renderDial(opts)}
+            {opts ?.showPrecentage && this.renderText(opts)}
             {!colors && this.renderProgress(opts)}
             {this.renderNeedle(opts)}
           </g>
@@ -175,7 +207,9 @@ ProgressionGauge.defaultProps = {
   needle: true,
   needleColor: '#000',
   needleBaseColor: '#000',
+  textColor: '#000',
   needleWidth: 8,
+  textPosition: 'topRight'
 };
 
 export default ProgressionGauge;
