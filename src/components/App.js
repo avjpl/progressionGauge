@@ -7,10 +7,10 @@ class App extends Component {
   render() {
     const opts = {
       progressColor: '#EEAD23',
-      currentValue: 3.5,
+      currentValue: 6.9,
       colors: [ 'e00030', 'f7a424', 'f8e71b', '7cd523', '417700' ],
       showPrecentage: true,
-      size: 150,
+      size: 200,
     };
 
     return (
