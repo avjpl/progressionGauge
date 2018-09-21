@@ -112,22 +112,6 @@ class ProgressionGauge extends Component {
     )
   };
 
-  renderText = opts => {
-    return (
-      <text
-        x={opts.cX - 15}
-        y={opts.cY - 180}
-        fontFamily={opts.progressFont}
-        fontSize={opts.progressFontSize}
-        transform={`rotate(90 ${opts.cX} ${opts.cY})`}
-        textAnchor="middle"
-        fill={opts.textColor}
-      >
-        {opts.currentValue}%
-      </text>
-    )
-  };
-
   render() {
     let opts = { ...this.props };
     const {
@@ -145,8 +129,8 @@ class ProgressionGauge extends Component {
     const radius = (size - (2 * strokeWidth)) / 2;
     const diameter = 2 * radius;
     const circumference = 2 * Math.PI * radius;
-    const needleAngle = (360 * currentValue) / 100;
-    const offset = (circumference * (1 - (currentValue / 100)));
+    const needleAngle = (360 * (currentValue * 10)) / 100;
+    const offset = (circumference * (1 - ((currentValue * 10) / 100)));
 
     opts = {
       ...opts, ...{
@@ -172,7 +156,6 @@ class ProgressionGauge extends Component {
         >
           <g transform={`rotate(-90 ${cX} ${cY})`}>
             {this.renderDial(opts)}
-            {opts?.showPrecentage && this.renderText(opts)}
             {!colors && this.renderProgress(opts)}
             {this.renderNeedle(opts)}
           </g>
