@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import num from 'num'
 
 import { arc } from '../helpers';
 
 import styles from './react-gauge.css';
+
+const setPrecision = (val) => num(val).set_precision(1).toString();
 
 class ProgressionGauge extends Component {
 
@@ -146,7 +149,7 @@ class ProgressionGauge extends Component {
 
     return (
       <div className={styles.gauage}>
-        { showPrecentage && <span className={`${styles.alignRight} ${styles[textPosition]}`}>{currentValue}</span> }
+        {showPrecentage && <span className={`${styles.alignRight} ${styles[textPosition]}`}>{setPrecision(currentValue)}</span> }
         <svg
           xmlns='http://www.w3.org/2000/svg'
           className={className}
